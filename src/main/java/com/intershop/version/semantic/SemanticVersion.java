@@ -32,6 +32,7 @@ public class SemanticVersion implements Comparable<SemanticVersion>
      * @param major the major component
      * @param minor the minor component
      * @param patch the patch component
+     * @return SemanticVersion
      */
     public static SemanticVersion valueOf(int major, int minor, int patch)
     {
@@ -281,7 +282,7 @@ public class SemanticVersion implements Comparable<SemanticVersion>
     }
 
     /**
-     * {@inheritDoc}<br/>
+     * {@inheritDoc}<br>
      * Uses the {@link NewestFirstComparator} for comparison.
      */
     @Override

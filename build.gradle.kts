@@ -18,8 +18,7 @@
 
 plugins {
     // project plugins
-    // project plugins
-    `java-gradle-plugin`
+    `java-library`
 
     // test coverage
     jacoco
@@ -69,8 +68,13 @@ repositories {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+        vendor.set(JvmVendorSpec.ADOPTIUM)
+    }
+
+    withJavadocJar()
+    withSourcesJar()
 }
 
 // set correct project status
@@ -97,16 +101,6 @@ tasks {
 
         val jacocoTestReport by tasks
         jacocoTestReport.dependsOn("test")
-    }
-
-    withType<Sign> {
-        val sign = this
-        withType<PublishToMavenLocal> {
-            this.dependsOn(sign)
-        }
-        withType<PublishToMavenRepository> {
-            this.dependsOn(sign)
-        }
     }
 }
 
