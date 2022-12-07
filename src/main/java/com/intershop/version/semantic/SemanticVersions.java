@@ -134,13 +134,13 @@ public class SemanticVersions
     }
 
     /**
-     * Verify compatibility of a new version with a given update strategy
+     * Verify that a new version can be reached with a given update strategy
      * @param oldVersion Old version
      * @param newVersion New version
      * @param strategy Update strategy
-     * @return true in case the new version is compatible (e.g. MINOR update requested 1.2.3 a minor update of 1.1.1)
+     * @return true in case the new version is reachable (e.g. MINOR update requested 1.2.3 a minor update of 1.1.1)
      */
-    public static boolean getIsCompatibleVersion(SemanticVersion oldVersion, SemanticVersion newVersion, UpdateStrategy strategy)
+    public static boolean isMigrationStepPossible(SemanticVersion oldVersion, SemanticVersion newVersion, UpdateStrategy strategy)
     {
         // non semantic included, up to developer
         if (!oldVersion.isIncrementable() || !newVersion.isIncrementable())
@@ -170,10 +170,6 @@ public class SemanticVersions
         if (oldVersion.getPatch() != newVersion.getPatch())
         {
             return false;
-        }
-        if (UpdateStrategy.INC.equals(strategy))
-        {
-            return true;
         }
         return true;
     }
