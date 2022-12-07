@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /*
  * Copyright 2022 Intershop Communications AG.
@@ -21,7 +20,6 @@ plugins {
     // project plugins
     // project plugins
     `java-gradle-plugin`
-    kotlin("jvm") version "1.7.10"
 
     // test coverage
     jacoco
@@ -87,10 +85,6 @@ jacoco {
 tasks {
     withType<Test> {
         useJUnitPlatform()
-    }
-
-    withType<KotlinCompile>  {
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     withType<JacocoReport> {
