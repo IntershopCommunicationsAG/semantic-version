@@ -1,7 +1,5 @@
 package com.intershop.version.semantic;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -287,7 +285,7 @@ public class SemanticVersion implements Comparable<SemanticVersion>
      * Uses the {@link NewestFirstComparator} for comparison.
      */
     @Override
-    public int compareTo(@NotNull SemanticVersion o)
+    public int compareTo(SemanticVersion o)
     {
         return COMPARATOR_NEWEST_FIRST.compare(this, o);
     }

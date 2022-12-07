@@ -56,7 +56,8 @@ public class SemanticVersions
                 .filter(SemanticVersion::isIncrementable)
                 .filter(v -> v.getMajor() == current.getMajor())
                 .filter(v -> v.getMinor() == current.getMinor())
-                .filter(v -> ReleaseType.GA.equals(v.getIncrementState())).min(COMPARATOR_NEWEST_FIRST);
+                .filter(v -> ReleaseType.GA.equals(v.getIncrementState()))
+                .max(COMPARATOR_NEWEST_FIRST);
         return firstElement.orElse(current);
     }
 
@@ -75,7 +76,7 @@ public class SemanticVersions
                         .filter(SemanticVersion::isIncrementable)
                         .filter(v -> v.getMajor() == current.getMajor())
                         .filter(v -> ReleaseType.GA.equals(v.getIncrementState()))
-                        .min(COMPARATOR_NEWEST_FIRST);
+                        .max(COMPARATOR_NEWEST_FIRST);
         return firstElement.orElse(current);
     }
 
@@ -94,7 +95,7 @@ public class SemanticVersions
                         .filter(SemanticVersion::isIncrementable)
                         .filter(v -> v.getIncrement() == 0)
                         .filter(v -> ReleaseType.GA.equals(v.getIncrementState()))
-                        .min(COMPARATOR_NEWEST_FIRST);
+                        .max(COMPARATOR_NEWEST_FIRST);
         return firstElement.orElse(current);
     }
 
@@ -112,7 +113,7 @@ public class SemanticVersions
     {
         Optional<SemanticVersion> firstElement = versions.stream()
                         .filter(SemanticVersion::isIncrementable)
-                        .min(COMPARATOR_NEWEST_FIRST);
+                        .max(COMPARATOR_NEWEST_FIRST);
         return firstElement.orElse(current);
     }
 

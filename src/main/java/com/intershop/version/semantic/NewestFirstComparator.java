@@ -3,7 +3,7 @@ package com.intershop.version.semantic;
 import java.util.Comparator;
 
 /**
- * Compares (highest first) two {@link SemanticVersion} by (ordered)
+ * Compares (lowest first) two {@link SemanticVersion} by (ordered)
  * <ul>
  *     <li>major version</li>
  *     <li>minor version</li>
@@ -17,17 +17,17 @@ public class NewestFirstComparator implements Comparator<SemanticVersion>
     @Override
     public int compare(SemanticVersion o1, SemanticVersion o2)
     {
-        int majorDiff = o2.getMajor() - o1.getMajor();
+        int majorDiff = o1.getMajor() - o2.getMajor();
         if (majorDiff != 0)
         {
             return majorDiff;
         }
-        int minorDiff = o2.getMinor() - o1.getMinor();
+        int minorDiff = o1.getMinor() - o2.getMinor();
         if (minorDiff != 0)
         {
             return minorDiff;
         }
-        int patchDiff = o2.getPatch() - o1.getPatch();
+        int patchDiff = o1.getPatch() - o2.getPatch();
         if (patchDiff != 0)
         {
             return patchDiff;
@@ -36,21 +36,21 @@ public class NewestFirstComparator implements Comparator<SemanticVersion>
         {
             if (o1.getIncrementState() != null)
             {
-                return - o1.getIncrementState().ordinal();
+                return o1.getIncrementState().ordinal();
             }
             if (o2.getIncrementState() != null)
             {
-                return o2.getIncrementState().ordinal();
+                return - o2.getIncrementState().ordinal();
             }
         }
         else
         {
-            int patchState = o2.getIncrementState().compareTo(o1.getIncrementState());
+            int patchState = o1.getIncrementState().compareTo(o2.getIncrementState());
             if (patchState != 0)
             {
                 return patchState;
             }
         }
-        return o2.getIncrement() - o1.getIncrement();
+        return o1.getIncrement() - o2.getIncrement();
     }
 }
