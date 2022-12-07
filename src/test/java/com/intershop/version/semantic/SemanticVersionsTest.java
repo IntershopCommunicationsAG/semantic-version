@@ -97,25 +97,25 @@ class SemanticVersionsTest
     }
 
     @Test
-    void testCompatibleVersion()
+    void testIsMigrationStepPossible()
     {
-        assertTrue(SemanticVersions.getIsCompatibleVersion(SemanticVersion.valueOf("16.3"),
+        assertTrue(SemanticVersions.isMigrationStepPossible(SemanticVersion.valueOf("16.3"),
                         SemanticVersion.valueOf("17.0"), UpdateStrategy.MAJOR), "is major update");
-        assertFalse(SemanticVersions.getIsCompatibleVersion(SemanticVersion.valueOf("16.3"),
+        assertFalse(SemanticVersions.isMigrationStepPossible(SemanticVersion.valueOf("16.3"),
                         SemanticVersion.valueOf("17.0"), UpdateStrategy.MINOR), "is major update");
-        assertTrue(SemanticVersions.getIsCompatibleVersion(SemanticVersion.valueOf("16.3"),
+        assertTrue(SemanticVersions.isMigrationStepPossible(SemanticVersion.valueOf("16.3"),
                         SemanticVersion.valueOf("16.4"), UpdateStrategy.MINOR), "is minor update");
-        assertFalse(SemanticVersions.getIsCompatibleVersion(SemanticVersion.valueOf("16.3"),
+        assertFalse(SemanticVersions.isMigrationStepPossible(SemanticVersion.valueOf("16.3"),
                         SemanticVersion.valueOf("16.4"), UpdateStrategy.PATCH), "is minor update");
-        assertTrue(SemanticVersions.getIsCompatibleVersion(SemanticVersion.valueOf("16.1.3"),
+        assertTrue(SemanticVersions.isMigrationStepPossible(SemanticVersion.valueOf("16.1.3"),
                         SemanticVersion.valueOf("16.1.4"), UpdateStrategy.PATCH), "is patch update");
-        assertFalse(SemanticVersions.getIsCompatibleVersion(SemanticVersion.valueOf("16.1.3"),
+        assertFalse(SemanticVersions.isMigrationStepPossible(SemanticVersion.valueOf("16.1.3"),
                         SemanticVersion.valueOf("16.1.4"), UpdateStrategy.INC), "is patch update");
-        assertFalse(SemanticVersions.getIsCompatibleVersion(SemanticVersion.valueOf("16.1.3"),
+        assertFalse(SemanticVersions.isMigrationStepPossible(SemanticVersion.valueOf("16.1.3"),
                         SemanticVersion.valueOf("16.1.4"), UpdateStrategy.STICK), "is sticky update");
-        assertTrue(SemanticVersions.getIsCompatibleVersion(SemanticVersion.valueOf("16.1.4-SNAPSHOT"),
+        assertTrue(SemanticVersions.isMigrationStepPossible(SemanticVersion.valueOf("16.1.4-SNAPSHOT"),
                         SemanticVersion.valueOf("16.1.4"), UpdateStrategy.STICK), "is sticky snapshot update");
-        assertTrue(SemanticVersions.getIsCompatibleVersion(SemanticVersion.valueOf("16.1.4-dev1"),
+        assertTrue(SemanticVersions.isMigrationStepPossible(SemanticVersion.valueOf("16.1.4-dev1"),
                         SemanticVersion.valueOf("16.1.4"), UpdateStrategy.STICK), "is sticky dev update");
     }
 }

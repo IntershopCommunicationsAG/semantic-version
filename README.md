@@ -50,13 +50,13 @@ SemanticVersion.valueOf(1, 2, 3)
 semanticVersion1.compareTo(semanticVersion2)
 ```
 
-with the following outcome
+Compares two versions with semantic meaning. This leads to following outcome.
 
-| State                                | Outcome   |
-|--------------------------------------|-----------|
-| semanticVersion1 < semanticVersion2  | `< 0`     |
-| semanticVersion1 == semanticVersion2 | `== 0`    |
-| semanticVersion1 > semanticVersion2  | `> 0`     |
+| Outcome | State                                | Meaning |
+|---------|--------------------------------------|---------|
+| `< 0`   | semanticVersion1 < semanticVersion2  | semanticVersion2 is greater/newer |
+| `== 0`  | semanticVersion1 == semanticVersion2 | same semantic meaning |
+| `> 0`   | semanticVersion1 > semanticVersion2  | semanticVersion1 is greater/newer |
 
 ## Finding an appropriate version
 Imagine the current version is
