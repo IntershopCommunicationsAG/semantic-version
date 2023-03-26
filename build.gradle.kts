@@ -162,7 +162,7 @@ signing {
 
 dependencies {
     implementation(gradleApi())
-
+    implementation("org.apache.commons:commons-collections4:4.4")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
     testImplementation("org.hamcrest:hamcrest:2.2")
