@@ -41,7 +41,7 @@ group = "com.intershop.version"
 description = "semantic version"
 
 // IMPORTANT will be set by -Pversion=${{ github.ref_name }}
-version = "1.0.0"
+// version = "1.0.0"
 
 val sonatypeUsername: String? by project
 val sonatypePassword: String? by project
