@@ -49,6 +49,6 @@ jobs:
         env:
           JAVA_OPTS: "-Xmx1024M"
           GRADLE_OPTS: "-Dorg.gradle.daemon=true"
-        run: ./gradlew -PrunOnCI=true test build :publishIntershopMvnPublicationToMavenRepository -s
+        run: ./gradlew -Pversion=${{ github.ref_name }} -PrunOnCI=true test build :publishIntershopMvnPublicationToMavenRepository -s
       - name: Post Build
         run: rm -f $HOME/.gradle/gradle.properties
