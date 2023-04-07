@@ -36,7 +36,7 @@ plugins {
     // intershop version plugin
     id("com.intershop.gradle.scmversion") version "6.2.0"
 
-    id("com.dorongold.task-tree") version "2.1.0"
+    id("com.dorongold.task-tree") version "2.1.1"
 }
 
 scm {
