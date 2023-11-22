@@ -80,7 +80,7 @@ tasks {
             xml.required.set(true)
             html.required.set(true)
 
-            html.outputLocation.set( File(project.buildDir, "jacocoHtml") )
+            html.outputLocation.set( File(project.layout.buildDirectory.asFile.get(), "jacocoHtml") )
         }
 
         val jacocoTestReport by tasks
@@ -145,10 +145,9 @@ signing {
 }
 
 dependencies {
-    implementation(gradleApi())
     implementation("org.apache.commons:commons-collections4:4.4")
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
-    testImplementation("org.hamcrest:hamcrest:2.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
