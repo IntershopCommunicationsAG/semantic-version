@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * Straight forward implementation of semantic versions without version extensions
  */
-class VersionImpl implements SemanticVersion
+class SemanticVersionImpl implements SemanticVersion
 {
     private final String version;
     private final VersionItem item;
@@ -20,7 +20,7 @@ class VersionImpl implements SemanticVersion
      * @param releaseType
      * @param isIncrementable parser decides that there are additional number which can't be incremented
      */
-    public VersionImpl(String version, VersionItem item)
+    public SemanticVersionImpl(String version, VersionItem item)
     {
         this.version = version;
         this.item = item;
@@ -81,9 +81,9 @@ class VersionImpl implements SemanticVersion
     @Override
     public int compareTo(SemanticVersion version)
     {
-        if (version instanceof VersionImpl)
+        if (version instanceof SemanticVersionImpl)
         {
-            return VersionComparators.VERSION_IMPL_COMPARATOR.compare(this, ((VersionImpl)version));
+            return VersionComparators.VERSION_IMPL_COMPARATOR.compare(this, ((SemanticVersionImpl)version));
         }
         return VersionComparators.SEMVER_MMP_COMPARATOR.compare(this, version);
     }
@@ -145,7 +145,7 @@ class VersionImpl implements SemanticVersion
             newItem = newItem.addNumber(number);
         }
         newItem = newItem.addExtensions(newExtensions);
-        return new VersionImpl(newItem.toString(), newItem);
+        return new SemanticVersionImpl(newItem.toString(), newItem);
     }
 
     @Override
@@ -160,7 +160,7 @@ class VersionImpl implements SemanticVersion
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        VersionImpl other = (VersionImpl)obj;
+        SemanticVersionImpl other = (SemanticVersionImpl)obj;
         return Objects.equals(version, other.version);
     }
 

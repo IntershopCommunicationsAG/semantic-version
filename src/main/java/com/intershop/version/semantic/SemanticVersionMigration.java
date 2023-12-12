@@ -34,7 +34,7 @@ class SemanticVersionMigration
      */
     public SemanticVersionMigration()
     {
-        this(new VersionResolver(), VersionComparators.VERSION_COMPARATOR);
+        this(new SemanticVersionResolverImpl(), VersionComparators.VERSION_COMPARATOR);
     }
 
     /**

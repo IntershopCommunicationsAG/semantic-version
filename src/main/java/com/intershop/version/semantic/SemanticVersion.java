@@ -29,7 +29,7 @@ public interface SemanticVersion extends Comparable<SemanticVersion>
      */
     static SemanticVersion valueOf(String version)
     {
-        return new VersionResolver().apply(version);
+        return new SemanticVersionResolverImpl().apply(version);
     }
 
     /**

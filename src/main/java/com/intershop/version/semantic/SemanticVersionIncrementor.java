@@ -25,7 +25,7 @@ public class SemanticVersionIncrementor
      */
     public SemanticVersionIncrementor()
     {
-        this(new VersionResolver(), VersionComparators.STRING_COMPARATOR);
+        this(new SemanticVersionResolverImpl(), VersionComparators.STRING_COMPARATOR);
     }
 
     /**

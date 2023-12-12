@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class VersionResolver implements SemanticVersionResolver
+class SemanticVersionResolverImpl implements SemanticVersionResolver
 {
     private static final Pattern DECIMAL_NONDECIMAL_SPLIT = Pattern.compile("^(\\d+)(\\D+)");
     private static final Pattern NONDECIMAL_DECIMAL_SPLIT = Pattern.compile("^(\\D+)(\\d+)");
@@ -60,6 +60,7 @@ class VersionResolver implements SemanticVersionResolver
         MAP_EXTENSION_TO_ITEM_EXTENSION.put("ea", "rc");
     }
 
+    @Override
     public SemanticVersion apply(String version)
     {
         int firstDash = version.indexOf("-");
@@ -209,7 +210,7 @@ class VersionResolver implements SemanticVersionResolver
 
     private SemanticVersion buildVersion(String version, VersionItem item)
     {
-        return new VersionImpl(version, item);
+        return new SemanticVersionImpl(version, item);
     }
 
     private static ExtensionType getReleaseType(String lowerCased)

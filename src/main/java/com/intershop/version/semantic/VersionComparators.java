@@ -36,7 +36,7 @@ import org.apache.commons.collections4.ComparatorUtils;
  */
 class VersionComparators
 {
-    private static final Function<String, SemanticVersion> RESOLVER = new VersionResolver();
+    private static final Function<String, SemanticVersion> RESOLVER = new SemanticVersionResolverImpl();
 
     /*
      * Comparer via SemanticVersion interface
@@ -69,7 +69,7 @@ class VersionComparators
     /*
      * Comparer for VersionImpl implementation of SemanticVersion (can sort deeper)
      */
-    private static final Comparator<VersionImpl> VERSION_NUMBERS_COMPARATER = (a, b) -> {
+    private static final Comparator<SemanticVersionImpl> VERSION_NUMBERS_COMPARATER = (a, b) -> {
         int amountOfNumber = Math.min(a.getNumbers().size(), b.getNumbers().size());
         for (int i = 0; i < amountOfNumber; i++)
         {
@@ -92,7 +92,7 @@ class VersionComparators
         return 0;
     };
 
-    private static final Comparator<VersionImpl> VERSION_RELEASE_TYPE_COMPARATER = (a, b) -> {
+    private static final Comparator<SemanticVersionImpl> VERSION_RELEASE_TYPE_COMPARATER = (a, b) -> {
         return SEMVER_RELEASE_TYPE_COMPARATER.compare(a, b);
     };
 
@@ -189,12 +189,12 @@ class VersionComparators
         }
         return negator * result;
     };
-    private static final Comparator<VersionImpl> VERSION_EXTENSION_COMPARATER = (a, b) -> {
+    private static final Comparator<SemanticVersionImpl> VERSION_EXTENSION_COMPARATER = (a, b) -> {
         return LIST_VERSION_EXTENSION_ITEM_COMPARATER.compare(a.getExtensions(), b.getExtensions());
     };
 
     @SuppressWarnings("unchecked")
-    public static final Comparator<VersionImpl> VERSION_IMPL_COMPARATOR = ComparatorUtils.chainedComparator(
+    public static final Comparator<SemanticVersionImpl> VERSION_IMPL_COMPARATOR = ComparatorUtils.chainedComparator(
                     VERSION_NUMBERS_COMPARATER, VERSION_RELEASE_TYPE_COMPARATER,
                     VERSION_EXTENSION_COMPARATER);
 }

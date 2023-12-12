@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class VersionResolverTest
 {
-    private final VersionResolver resolver = new VersionResolver();
+    private final SemanticVersionResolverImpl resolver = new SemanticVersionResolverImpl();
 
     @Test
     void testSplitVersion()
