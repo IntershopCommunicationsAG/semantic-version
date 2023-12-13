@@ -33,31 +33,15 @@ plugins {
     // artifact signing - necessary on Maven Central
     signing
 
-    // intershop version plugin
-    id("com.intershop.gradle.scmversion") version "6.2.0"
-
     id("com.dorongold.task-tree") version "2.1.0"
-}
-
-scm {
-    version {
-        type = "threeDigits"
-        initialVersion = "1.0.0"
-    }
 }
 
 // release configuration
 group = "com.intershop.version"
 description = "semantic version"
 
-// IMPORTANT version referenced at README.md, adapt it there
-version = scm.version.version
-// IMPORTANT version referenced at README.md, adapt it there
-
-// set correct project status
-if (project.version.toString().endsWith("-SNAPSHOT")) {
-    status = "snapshot"
-}
+// IMPORTANT will be set by -Pversion=${{ github.ref_name }}
+// version = "1.0.0"
 
 val sonatypeUsername: String? by project
 val sonatypePassword: String? by project
@@ -96,7 +80,7 @@ tasks {
             xml.required.set(true)
             html.required.set(true)
 
-            html.outputLocation.set( File(project.buildDir, "jacocoHtml") )
+            html.outputLocation.set( File(project.layout.buildDirectory.asFile.get(), "jacocoHtml") )
         }
 
         val jacocoTestReport by tasks
@@ -161,10 +145,9 @@ signing {
 }
 
 dependencies {
-    implementation(gradleApi())
+    implementation("org.apache.commons:commons-collections4:4.4")
 
-
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
-    testImplementation("org.hamcrest:hamcrest:2.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

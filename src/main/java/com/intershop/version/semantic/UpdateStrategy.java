@@ -23,15 +23,41 @@ package com.intershop.version.semantic;
  *     <li>{@link #MAJOR}: allow updates up to the major version</li>
  *     <li>{@link #MINOR}: allow updates up to the minor version</li>
  *     <li>{@link #PATCH}: allow updates up to the patch version</li>
- *     <li>{@link #INC}: allow all updates</li>
+ *     <li>{@link #DEV}: allow update to newest (also non production ready) version</li>
  *     <li>{@link #STICK}: allow <b>no</b> updates at all</li>
  * </ul>
  */
 public enum UpdateStrategy
 {
+    /**
+     * Allows or includes major (incompatible) updates
+     */
     MAJOR,
+
+    /**
+     * Allows or includes minor (compatible) updates; compatible on update to newer (this) version, but not compatible for updates to an older version.
+     */
     MINOR,
+
+    /**
+     * Allows or includes patch (compatible) updates
+     */
     PATCH,
-    INC,
-    STICK;
+
+    /**
+     * Allows or includes updates to non-production ready versions
+     */
+    DEV,
+
+    /**
+     * Don't allow updates
+     */
+    STICK,
+
+    /**
+     * Increment 
+     * @deprecated use DEV
+     */
+    @Deprecated
+    INC;
 }

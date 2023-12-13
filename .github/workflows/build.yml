@@ -50,6 +50,6 @@ jobs:
         env:
           JAVA_OPTS: "-Xmx1024M"
           GRADLE_OPTS: "-Dorg.gradle.daemon=true"
-        run: ./gradlew test build -s
+        run: ./gradlew  -Pversion=${{ github.ref_name }}-SNAPSHOT test build javadoc -s
       - name: Post Build
         run: rm -f $HOME/.gradle/gradle.properties

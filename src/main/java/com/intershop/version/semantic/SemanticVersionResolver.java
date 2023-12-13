@@ -16,11 +16,13 @@
  */
 package com.intershop.version.semantic;
 
-public enum ReleaseType
+import java.util.function.Function;
+
+interface SemanticVersionResolver extends Function<String, SemanticVersion>
 {
     /**
-     * The order is important for sorting number.
-     * In case a RC release is available the DEV releases are behind
+     * @param version
+     * @return converted version 
      */
-    DEV, RC, GA;
+    SemanticVersion apply(String version);
 }
