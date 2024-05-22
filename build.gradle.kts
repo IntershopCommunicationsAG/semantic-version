@@ -33,7 +33,7 @@ plugins {
     // artifact signing - necessary on Maven Central
     signing
 
-    id("com.dorongold.task-tree") version "2.1.0"
+    id("com.dorongold.task-tree") version "3.0.0"
 }
 
 // release configuration
