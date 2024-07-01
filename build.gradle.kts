@@ -147,7 +147,7 @@ signing {
 dependencies {
     implementation("org.apache.commons:commons-collections4:4.4")
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
