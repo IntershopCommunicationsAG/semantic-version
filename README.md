@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/IntershopCommunicationsAG/sementic-version/actions/workflows/build.yml/badge.svg)](https://github.com/IntershopCommunicationsAG/sementic-version/actions/workflows/build.yml)
+[![Build Status](https://github.com/IntershopCommunicationsAG/semantic-version/actions/workflows/build.yml/badge.svg)](https://github.com/IntershopCommunicationsAG/semantic-version/actions/workflows/build.yml)
 
 # Introduction
 
