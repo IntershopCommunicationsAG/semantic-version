@@ -39,9 +39,9 @@ plugins {
 // release configuration
 group = "com.intershop.version"
 description = "semantic version"
-
-// IMPORTANT will be set by -Pversion=${{ github.ref_name }}
-// version = "1.0.0"
+// apply gradle property 'projectVersion' to project.version, default to 'LOCAL'
+val projectVersion : String? by project
+version = projectVersion ?: "LOCAL"
 
 val sonatypeUsername: String? by project
 val sonatypePassword: String? by project
