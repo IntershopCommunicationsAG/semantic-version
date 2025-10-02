@@ -80,6 +80,7 @@ public enum ExtensionType
     }
 
     /**
+     * Checks if this {@link ExtensionType} is recommended for production
      * @return true if the related version is recommended for production
      */
     public boolean isRecommendedForProduction()
@@ -88,7 +89,8 @@ public enum ExtensionType
     }
 
     /**
-     * @return true numbers in the version extension is relevant for sorting (true for rc1; false for jre8)
+     * Checks the numbers in the version extension are relevant for sorting
+     * @return true numbers in the version extension are relevant for sorting (true for rc1; false for jre8)
      */
     public boolean isAreNumbersRelevantForSorting()
     {

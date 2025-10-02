@@ -40,6 +40,7 @@ public class SemanticVersionIncrementor
     }
 
     /**
+     * Returns a version string, which can be used for up-comming releases.
      * @param oldVersions list of version, related to the current commit
      * @param strategy fallback update strategy in case the newest listed version is not a pre or dev release
      * @return a version string, which can be used for up-comming releases.
@@ -117,6 +118,7 @@ public class SemanticVersionIncrementor
     }
 
     /**
+     * Returns a version string, which can be used for up-comming pre- or dev- releases. It will increment the last number of pre release extension. if not pre release extension will be found "alpha1" is added.
      * @param oldVersions list of version, related to the current commit
      * @param strategy fallback update strategy in case the newest listed version is not a pre or dev release
      * @return a version string, which can be used for up-comming pre- or dev- releases. It will increment the last number of pre release extension. if not pre release extension will be found "alpha1" is added.
