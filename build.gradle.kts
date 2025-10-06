@@ -35,7 +35,7 @@ plugins {
     // artifact signing - necessary on Maven Central
     signing
 
-    id("com.dorongold.task-tree") version "4.0.0"
+    id("com.dorongold.task-tree") version "4.0.1"
 
     id("io.gitee.pkmer.pkmerboot-central-publisher") version "1.1.1"
 }
