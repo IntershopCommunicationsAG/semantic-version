@@ -87,8 +87,7 @@ tasks {
             html.outputLocation.set( File(project.layout.buildDirectory.asFile.get(), "jacocoHtml") )
         }
 
-        val jacocoTestReport by tasks
-        jacocoTestReport.dependsOn("test")
+        dependsOn(test)
     }
 }
 
