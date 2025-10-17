@@ -24,6 +24,7 @@ import java.util.Optional;
 public interface SemanticVersion extends Comparable<SemanticVersion>
 {
     /**
+     * Creates a {@link SemanticVersion} from a {@link String}
      * @param version version as string
      * @return semantic version to retrieve semantic meaning
      */
@@ -33,26 +34,31 @@ public interface SemanticVersion extends Comparable<SemanticVersion>
     }
 
     /**
+     * Returns the major version component
      * @return the major version component
      */
     int getMajor();
 
     /**
+     * Returns the minor version component
      * @return the minor version component
      */
     int getMinor();
 
     /**
+     * Returns the patch version component
      * @return the patch version component
      */
     int getPatch();
 
     /**
+     * Returns the version string that had been used to create this instance
      * @return the version string that had been used to create this instance
      */
     String getVersion();
 
     /**
+     * Returns the true if the given version is recommended for production environments
      * @return true if the given version is recommended for production environments
      */
     default boolean isRecommendedForProduction()
@@ -61,21 +67,25 @@ public interface SemanticVersion extends Comparable<SemanticVersion>
     }
 
     /**
+     * Returns the increment state (release type) of this version
      * @return the increment state (release type) of this version
      */
     ExtensionType getReleaseType();
 
     /**
+     * Returns the text behind the semantic version
      * @return the text behind the semantic version
      */
     String getExtension();
 
     /**
+     * Returns the platform extensions with a leading dash or Optional.empty();
      * @return the platform extensions with a leading dash or Optional.empty();
      */
     Optional<String> getPlatformExtension();
 
     /**
+     * Returns semantic version without any extensions
      * @return semantic version without any extensions so major.minor.patch and additional numbers for versions with
      *         more than 3 numbers.
      */
@@ -90,6 +100,7 @@ public interface SemanticVersion extends Comparable<SemanticVersion>
     }
 
     /**
+     * Increments the version
      * @return the semantic version, which would be the next following of the current (e.g. 1.0.0-alpha-2 for 1.0.0-alpha-1)
      */
     SemanticVersion incrementLastIncrement();
