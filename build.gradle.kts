@@ -35,7 +35,7 @@ plugins {
     // artifact signing - necessary on Maven Central
     signing
 
-    id("com.dorongold.task-tree") version "4.0.1"
+    id("com.dorongold.task-tree") version "4.0.2"
 
     id("io.gitee.pkmer.pkmerboot-central-publisher") version "1.1.1"
 }
@@ -44,11 +44,11 @@ plugins {
 group = "com.intershop.version"
 description = "semantic version"
 // apply gradle property 'projectVersion' to project.version, default to 'LOCAL'
-val projectVersion : String? by project
+val projectVersion = project.findProperty("projectVersion") as String?
 version = projectVersion ?: "LOCAL"
 
-val sonatypeUsername: String? by project
-val sonatypePassword: String? by project
+val sonatypeUsername = project.findProperty("sonatypeUsername") as String?
+val sonatypePassword = project.findProperty("sonatypePassword") as String?
 
 repositories {
     gradlePluginPortal()
@@ -71,7 +71,7 @@ if (project.version.toString().endsWith("-SNAPSHOT")) {
 }
 
 jacoco {
-    toolVersion = "0.8.12"
+    toolVersion = "0.8.15"
 }
 
 tasks {
@@ -165,7 +165,7 @@ signing {
 dependencies {
     implementation("org.apache.commons:commons-collections4:4.5.0")
 
-    testImplementation("org.junit.jupiter:junit-jupiter:6.0.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:6.1.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
